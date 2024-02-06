@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">My Blog App</div>
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" id="icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </label>
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs">Blog</a></li>
+            <% if (locals.user) { %>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/my-blogs">My Blogs</a></li>
+                <span style="font-size: large;color: white;">
+                    <%= user %>
+                </span>
+                <% } else { %>
+
+                    <li><a href="/register">Register</a></li>
+                    <% } %>
+        </ul>
+    </nav>
+</body>
+
+</html>

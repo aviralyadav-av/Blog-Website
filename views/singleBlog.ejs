@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Blog</title>
+</head>
+
+<body>
+    <% if (locals?.user!==null) { %>
+        <%- include('./Navbar.ejs',{ user:user }) %>
+            <% } else { %>
+                <%- include('./Navbar.ejs',{ user:null }) %>
+                    <% } %>
+
+
+
+                        <div class="wrapper1">
+
+                            <div class="container1">
+
+                                <% if (blog?.image) { %>
+                                    <div>
+                                        <img src="/<%= blog.image %>" alt="random image" />
+                                    </div>
+                                    <% } %>
+                                        <div class="post">
+                                            <h4 class="title">
+                                                <%= blog.title %>
+                                            </h4>
+                                            <p class="desc">
+                                                <%= blog.body %>
+                                            </p>
+
+                                        </div>
+                                        <h3 style="margin-top: 2rem;margin-left: 3.5rem;">Created By : <%= username %>
+                                        </h3>
+                            </div>
+                        </div>
+</body>
+
+</html>

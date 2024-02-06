@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A Blog</title>
+
+    <style>
+        label {
+            color: #000 !important;
+
+        }
+
+        input {
+            background-color: white !important;
+        }
+
+        textarea {
+            border: none;
+            outline: none;
+            padding: 30px;
+            border-radius: 1rem;
+            margin-left: 28rem;
+            width: 521px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <% if (locals.user) { %>
+        <%- include('./Navbar.ejs',{user:user}) %>
+
+            <% } else { %>
+
+                <%- include('./Navbar.ejs',{user:null}) %>
+                    <% } %>
+
+                        <div class="signup">
+                            <form action="/addBlog" method="post" enctype="multipart/form-data">
+                                <label for="chk" aria-hidden="true">Add Blog</label>
+                                <input type="text" name="title" placeholder="Enter Title" required="true">
+                                <textarea placeholder="Enter Description" name="body" cols="30" rows="10"
+                                    required="true"></textarea>
+                                <input type="file" name="image" />
+                                <button>Add</button>
+                            </form>
+                        </div>
+</body>
+
+</html>

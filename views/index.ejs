@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home ejs</title>
+</head>
+
+<body>
+    <% if (locals?.user!==null) { %>
+        <%- include('./Navbar.ejs',{user:user}) %>
+
+            <% } else { %>
+
+                <%- include('./Navbar.ejs',{user:null}) %>
+                    <% } %>
+                        <div class="wrapper">
+                            <h3>Recent Posts</h3>
+
+
+                            <% locals?.blogs.forEach(element=> { %>
+                                <div class="container">
+                                    <% if (element?.image) { %>
+                                        <div>
+                                            <img src="<%= element.image %>" alt="random image" />
+                                        </div>
+                                        <% } %>
+                                            <div class="post">
+                                                <h4 class="title">
+                                                    <%=element.title %>
+                                                </h4>
+                                                <p class="desc">
+                                                    <%= element.body %>
+                                                </p>
+                                                <a href="/blog/<%= element._id%>" class="readLink">Read More</a>
+                                            </div>
+                                </div>
+                                <% }) %>
+                                    <button class="btn">Read More</button>
+                        </div>
+</body>
+
+</html>

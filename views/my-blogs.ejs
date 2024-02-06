@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blogs</title>
+</head>
+
+<body>
+
+    <% if (locals.user) { %>
+        <%- include('./Navbar.ejs',{user:user}) %>
+
+            <% } else { %>
+
+                <%- include('./Navbar.ejs',{user:null}) %>
+                    <% } %>
+                        <div class="wrapper">
+                            <h3>Your Blogs</h3>
+
+                            <a href="/add-blog">Add blog</a>
+                            <% locals?.blogs.forEach(element=> { %>
+
+                                <div class="container">
+                                    <% if (element?.image) { %>
+                                        <div>
+                                            <img src="/<%= element.image %>" alt="random image" />
+                                        </div>
+                                        <% } %>
+                                            <div class="post">
+                                                <h4 class="title">
+                                                    <%=element.title %>
+                                                </h4>
+                                                <p class="desc">
+                                                    <%= element.body %>
+                                                </p>
+                                                <a href="/blog/<%= element._id%>" class="readLink">Read More</a>
+                                            </div>
+                                            <div class="allBtns">
+                                                <a style="text-decoration: none;"
+                                                    href="/blog-update/<%= element?._id %>" class="btn">Update</a>
+                                                <a style="text-decoration: none;"
+                                                    href="/blog-delete/<%= element?._id %>" class="btn">Delete</a>
+                                            </div>
+                                </div>
+                                <% }) %>
+                                    <button class="btn">Read More</button>
+                        </div>
+
+
+</body>
+
+</html>
